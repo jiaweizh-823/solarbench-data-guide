@@ -1,0 +1,77 @@
+﻿site,modality,url,kind,note
+Folsom,辐照度 GHI/DNI/DHI,https://zenodo.org/records/2826939/files/Folsom_irradiance.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,气象,https://zenodo.org/records/2826939/files/Folsom_weather.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,天空图像 2014,https://zenodo.org/records/2826939/files/Folsom_sky_images_2014.tar.bz2?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,天空图像 2015,https://zenodo.org/records/2826939/files/Folsom_sky_images_2015.tar.bz2?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,天空图像 2016,https://zenodo.org/records/2826939/files/Folsom_sky_images_2016.tar.bz2?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,NAM NWP 四邻点,https://zenodo.org/records/2826939/files/Folsom_NAM_lat38.579454_lon-121.260320.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,NAM NWP 四邻点,https://zenodo.org/records/2826939/files/Folsom_NAM_lat38.599891_lon-121.126680.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,NAM NWP 四邻点,https://zenodo.org/records/2826939/files/Folsom_NAM_lat38.683880_lon-121.286556.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,NAM NWP 四邻点,https://zenodo.org/records/2826939/files/Folsom_NAM_lat38.704328_lon-121.152788.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,原始 GOES-15 10×10 影像 CSV,https://zenodo.org/records/2826939/files/Folsom_satellite.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,天空图像派生特征,https://zenodo.org/records/2826939/files/Folsom_sky_image_features.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,辐照度派生特征 day-ahead,https://zenodo.org/records/2826939/files/Irradiance_features_day-ahead.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,辐照度派生特征 intra-day,https://zenodo.org/records/2826939/files/Irradiance_features_intra-day.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,辐照度派生特征 intra-hour,https://zenodo.org/records/2826939/files/Irradiance_features_intra-hour.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,天空图像 intra-hour 特征,https://zenodo.org/records/2826939/files/Sky_image_features_intra-hour.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,卫星 intra-day 特征,https://zenodo.org/records/2826939/files/Sat_image_features_intra-day.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,NAM day-ahead 特征,https://zenodo.org/records/2826939/files/NAM_nearest_node_day-ahead.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,预测目标 day-ahead,https://zenodo.org/records/2826939/files/Target_day-ahead.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,预测目标 intra-day,https://zenodo.org/records/2826939/files/Target_intra-day.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Folsom,预测目标 intra-hour,https://zenodo.org/records/2826939/files/Target_intra-hour.csv?download=1,file,官方文件表；本环境直接下载曾返回 403。
+Golden,辐照度与气象 CSV API,https://midcdmz.nlr.gov/apps/data_api.pl?site=BMS&begin=20210417&end=20210417,API,begin/end 是 YYYYMMDD；本例 2021-04-17，MST 时间。
+Golden,天空图像日 ZIP 模板,https://midcdmz.nlr.gov/tsi/SRRLASI/{YYYY}/{YYYYMMDD}.zip,template,将占位符替换为实际日期；不存在的日期可能返回错误。
+Golden,天空图像实际 ZIP,https://midcdmz.nlr.gov/tsi/SRRLASI/2021/20210417.zip,file,2021-04-17 样例。
+Golden,历史图像日期选择器,https://midcdmz.nlr.gov/apps/imagergallery.pl?SRRLASI,browser,通过页面选择日期；对应 ASI-16。
+SIRTA,天空图像全部年份目录,ftp://sirtacam@ftp.sirta.ipsl.polytechnique.fr/srf02/,directory,公共账号 sirtacam，空密码；实测列有 2014—2026。
+SIRTA,天空图像日目录模板,ftp://sirtacam@ftp.sirta.ipsl.polytechnique.fr/srf02/{YYYY}/{MM}/{DD}/,template,列目录获取真实 ZIP 文件名；起始时间和样本数每日不同。
+SIRTA,天空图像实际 ZIP,ftp://sirtacam@ftp.sirta.ipsl.polytechnique.fr/srf02/2021/04/17/srf02_0a_skyimgLz2_v01_20210417_042400_893.zip,file,2021-04-17 样例。
+SIRTA,辐射测量全部年份目录,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/radflux/,directory,公共账号 sirta_access，空密码；数值文件为 TXT。
+SIRTA,辐射测量日目录模板,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/radflux/{YYYY}/{MM}/{DD}/,template,先列文件，区分 2AP/SOLYS2、数据版本和 PNG 快视图。
+SIRTA,辐照度实际 TXT,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/radflux/2021/04/17/radflux_1a_Lz2M1minI2apPrayDp_v07_20210417_000000_1440.txt,file,UTC；Direct/Diffuse/Global Solar Flux。
+CO-PDD,图像文件清单 API,https://ap.icare.univ-lille.fr/daalia/products/PUY_SKYIMAGER_L1A/files?start_time=2021-04-17T12:00:00Z&end_time=2021-04-17T12:05:00Z&protocol=HTTPS,API,改 start_time/end_time；读取 JSON urls 数组，区分图像后缀。
+CO-PDD,天空图像目录,https://www.icare.univ-lille.fr/asd-content/archive?dir=GROUND-BASED/COPDD_Puy-De-Dome/SKY-IMAGER/SKY-IMAGER_L1A,browser,目录页跳登录，部分文件直链实测可匿名读取。
+CO-PDD,实际 JPEG 示例,https://www.icare.univ-lille.fr/asd-content/archive/download.php?file=GROUND-BASED/COPDD_Puy-De-Dome/SKY-IMAGER/SKY-IMAGER_L1A.v1-00/2021/2021_04_17/CO-PDD_SKY-IMAGER_20210417120200_01.jpg,file,2021-04-17 12:02 示例；JPEG 文件头已验证。
+CO-PDD,天空图像 SFTP 目录,sftp://sftp.icare.univ-lille.fr/GROUND-BASED/COPDD_Puy-De-Dome/SKY-IMAGER/SKY-IMAGER_L1A,directory,官方元数据给出，需按提供方账号与访问要求使用。
+CO-PDD / Cézeaux,气象原始档案,https://www.icare.univ-lille.fr/asd-content/archive?dir=GROUND-BASED/COPDD_Puy-De-Dome/METEO/METEO_RAW,browser,官方记录对应 Cézeaux，列示 2015-01-01—2018-10-25；不能直接当作 Puy de Dôme 同站辐照度标签。
+Gatton,UQ RDM 文件下载页,https://rdm.uq.edu.au/files/b051cba0-47b4-11ee-a00c-6f5af7bc2718,browser,Open Access，DOWNLOAD FILE 按钮；实际文件下载尚未验证。
+Gatton,eSpace 原始记录,https://espace.library.uq.edu.au/view/UQ:bd7e108,landing_page,2408×1536、10 秒天空图像；1 分钟 PV；非商业使用。
+Stanford,ERA5 再分析,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ERA5/test-00000-of-00001.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,ERA5 再分析,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ERA5/train-00000-of-00001.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,GFS NWP,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/GFS/test-00000-of-00001.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,GFS NWP,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/GFS/train-00000-of-00001.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,天空图像＋PV,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ground/test-00000-of-00001.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,天空图像＋PV,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ground/train-00000-of-00005.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,天空图像＋PV,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ground/train-00001-of-00005.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,天空图像＋PV,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ground/train-00002-of-00005.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,天空图像＋PV,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ground/train-00003-of-00005.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,天空图像＋PV,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ground/train-00004-of-00005.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,PV 数值，不含图像,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ground_no_sky_img/test-00000-of-00001.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,PV 数值，不含图像,https://huggingface.co/datasets/solarbench/SKIPPD/resolve/main/ground_no_sky_img/train-00000-of-00001.parquet?download=true,file,由 HF API 返回的真实文件名；全量内容未逐个下载。
+Stanford,原始 benchmark 档案,https://purl.stanford.edu/dj417rh1007,landing_page,作者 README 提供，非当前 HF 文件组织。
+Stanford,高分辨率原始档案,https://purl.stanford.edu/sm043zf7254,landing_page,作者 README 提供，非当前 HF 文件组织。
+Gatton,卫星 Himawari-8,https://noaa-himawari8.s3.amazonaws.com/index.html#AHI-L1b-FLDK/,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Golden,卫星 GOES-16,https://noaa-goes16.s3.amazonaws.com/index.html#ABI-L1b-RadC/,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Paris / Palaiseau,卫星 MSG,https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Paris / Palaiseau,卫星 MSG,https://github.com/openclimatefix/satellite-consumer,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Puy de Dôme,卫星 MSG,https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Puy de Dôme,卫星 MSG,https://github.com/openclimatefix/satellite-consumer,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Akwatia,卫星 MSG,https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Akwatia,卫星 MSG,https://github.com/openclimatefix/satellite-consumer,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Kologo,卫星 MSG,https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Kologo,卫星 MSG,https://github.com/openclimatefix/satellite-consumer,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Sankt Augustin,卫星 MSG,https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Sankt Augustin,卫星 MSG,https://github.com/openclimatefix/satellite-consumer,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Hong Kong,卫星 Himawari-9,https://noaa-himawari9.s3.amazonaws.com/index.html#AHI-L1b-FLDK/,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Nottingham,卫星 MSG,https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+Nottingham,卫星 MSG,https://github.com/openclimatefix/satellite-consumer,official_table_3_link,SolarBench Supplementary Table 3；原始数据需自行裁剪与对齐。
+All sites,GFS NWP,https://noaa-gfs-bdp-pds.s3.amazonaws.com/index.html,directory,公共原始档案，历史覆盖需检查。
+All sites,ERA5 再分析,https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download,catalogue,需 CDS 账号/API 凭证；原始产品需按坐标提取。
+SIRTA,气象仪器 meteoairsol,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteoairsol/,directory,官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。
+SIRTA,气象仪器 meteocerea,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteocerea/,directory,官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。
+SIRTA,气象仪器 meteomat30,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteomat30/,directory,官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。
+SIRTA,气象仪器 meteomat50,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteomat50/,directory,官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。
+SIRTA,气象仪器 meteosol,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteosol/,directory,官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。
+SIRTA,气象仪器 meteoz1,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteoz1/,directory,官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。
+SIRTA,气象仪器 meteoz2,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteoz2/,directory,官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。
+SIRTA,气象仪器 meteoz5,ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteoz5/,directory,官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。

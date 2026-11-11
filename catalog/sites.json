@@ -98,7 +98,19 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "论文选取：2014-01-02—2016-12-30；原始公开记录覆盖 2014—2016。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": null,
+        "access_links": [],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3",
+        "note": "N/A in SolarBench Supplementary Table 3; does not imply no satellite data exists in other archives."
+      }
     },
     {
       "id": "golden",
@@ -167,7 +179,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "论文选取：2021-04-17—2024-03-22；原始 BMS 测量自 1981-07-15 起，ASI-16 自 2017-09-26 起（官方说明，未逐日核查）。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "GOES-16",
+        "temporal_resolution_minutes": 5,
+        "bands": 16,
+        "access_links": [
+          "https://noaa-goes16.s3.amazonaws.com/index.html#ABI-L1b-RadC/"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3",
+        "segment_as_printed": null
+      }
     },
     {
       "id": "sirta",
@@ -232,6 +260,62 @@
           "kind": "measurement_file",
           "verification": "numeric_txt_body_verified",
           "note": "UTC 时间，Direct/Diffuse/Global Solar Flux，W/m²。"
+        },
+        {
+          "name": "气象仪器 meteoairsol",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteoairsol/",
+          "kind": "ftp_directory",
+          "verification": "directory_name_verified",
+          "note": "官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。"
+        },
+        {
+          "name": "气象仪器 meteocerea",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteocerea/",
+          "kind": "ftp_directory",
+          "verification": "directory_name_verified",
+          "note": "官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。"
+        },
+        {
+          "name": "气象仪器 meteomat30",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteomat30/",
+          "kind": "ftp_directory",
+          "verification": "directory_name_verified",
+          "note": "官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。"
+        },
+        {
+          "name": "气象仪器 meteomat50",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteomat50/",
+          "kind": "ftp_directory",
+          "verification": "directory_name_verified",
+          "note": "官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。"
+        },
+        {
+          "name": "气象仪器 meteosol",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteosol/",
+          "kind": "ftp_directory",
+          "verification": "directory_name_verified",
+          "note": "官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。"
+        },
+        {
+          "name": "气象仪器 meteoz1",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteoz1/",
+          "kind": "ftp_directory",
+          "verification": "directory_name_verified",
+          "note": "官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。"
+        },
+        {
+          "name": "气象仪器 meteoz2",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteoz2/",
+          "kind": "ftp_directory",
+          "verification": "directory_name_verified",
+          "note": "官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。"
+        },
+        {
+          "name": "气象仪器 meteoz5",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/meteoz5/",
+          "kind": "ftp_directory",
+          "verification": "directory_name_verified",
+          "note": "官方公共 FTP 已列出该目录；仪器/高度/分区不同，具体文件时段与数值未逐项验证，不能直接视为同一观测序列。"
         }
       ],
       "license": {
@@ -243,7 +327,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "论文选取：2015-01-02—2022-12-31；官方图像元数据起于 2014-12-01，公共 FTP 列有 2014—2026 年目录，未检查逐日连续性。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "MSG",
+        "temporal_resolution_minutes": 5,
+        "bands": 12,
+        "access_links": [
+          "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+          "https://github.com/openclimatefix/satellite-consumer"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3"
+      }
     },
     {
       "id": "copdd",
@@ -319,7 +419,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "论文选取：2015-12-01—2023-08-27；官方图像元数据起于 2015-12-01 13:16，未给出末端日期。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "MSG",
+        "temporal_resolution_minutes": 5,
+        "bands": 12,
+        "access_links": [
+          "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+          "https://github.com/openclimatefix/satellite-consumer"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3"
+      }
     },
     {
       "id": "gatton",
@@ -385,7 +501,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "论文选取：2020-01-23—2020-05-06；公开下载页未单列完整文件时间边界。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "Himawari-8",
+        "temporal_resolution_minutes": 10,
+        "bands": 16,
+        "access_links": [
+          "https://noaa-himawari8.s3.amazonaws.com/index.html#AHI-L1b-FLDK/"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3",
+        "segment_as_printed": "S0810"
+      }
     },
     {
       "id": "stanford",
@@ -444,7 +576,19 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "HF 地面数据卡展示：2017-03-09—2019-10-26；GFS/ERA5 各自完整文件时间边界未另行检查。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": null,
+        "access_links": [],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3",
+        "note": "N/A in SolarBench Supplementary Table 3; does not imply no satellite data exists in other archives."
+      }
     },
     {
       "id": "akwatia",
@@ -489,7 +633,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "地面数据：尚未确认公开；论文采集：2022-04-02—2022-09-23。卫星/GFS/ERA5 为独立原始档案，需另查时段。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "MSG",
+        "temporal_resolution_minutes": 15,
+        "bands": 12,
+        "access_links": [
+          "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+          "https://github.com/openclimatefix/satellite-consumer"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3"
+      }
     },
     {
       "id": "kologo",
@@ -534,7 +694,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "地面数据：尚未确认公开；论文采集：2022-04-02—2022-10-04。卫星/GFS/ERA5 为独立原始档案，需另查时段。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "MSG",
+        "temporal_resolution_minutes": 15,
+        "bands": 12,
+        "access_links": [
+          "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+          "https://github.com/openclimatefix/satellite-consumer"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3"
+      }
     },
     {
       "id": "st-augustin",
@@ -581,7 +757,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "地面数据：尚未确认公开；论文采集：2020-11-19—2022-11-14。卫星/GFS/ERA5 为独立原始档案，需另查时段。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "MSG",
+        "temporal_resolution_minutes": 5,
+        "bands": 12,
+        "access_links": [
+          "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+          "https://github.com/openclimatefix/satellite-consumer"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3"
+      }
     },
     {
       "id": "hong-kong",
@@ -628,7 +820,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "地面数据：尚未确认公开；论文采集：2023-02-18—2023-12-31。卫星/GFS/ERA5 为独立原始档案，需另查时段。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "Himawari-9",
+        "temporal_resolution_minutes": 10,
+        "bands": 16,
+        "access_links": [
+          "https://noaa-himawari9.s3.amazonaws.com/index.html#AHI-L1b-FLDK/"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3",
+        "segment_as_printed": "S0301"
+      }
     },
     {
       "id": "nottingham",
@@ -676,7 +884,23 @@
       "sources": [
         "https://arxiv.org/html/2609.06187v1",
         "https://solarbench.github.io/citation.html"
-      ]
+      ],
+      "public_source_coverage": {
+        "description": "地面数据：尚未确认公开；论文采集：2023-01-05—2023-12-31。卫星/GFS/ERA5 为独立原始档案，需另查时段。",
+        "checked_at": "2026-11-11",
+        "note": "Published catalogue/metadata coverage is not a guarantee of uninterrupted file availability."
+      },
+      "satellite_supplementary_table_3": {
+        "platform": "MSG",
+        "temporal_resolution_minutes": 5,
+        "bands": 12,
+        "access_links": [
+          "https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide",
+          "https://github.com/openclimatefix/satellite-consumer"
+        ],
+        "source": "https://arxiv.org/html/2609.06187v1",
+        "table": "Supplementary Table 3"
+      }
     }
   ]
 }

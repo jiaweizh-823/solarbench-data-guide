@@ -2,7 +2,7 @@
 
 **快速了解 11 个站点的数据、找到原始接口、按需下载。** 本仓库是独立整理的原始数据索引，服务于太阳辐照度／光伏功率预测研究。核查日期：**2026-11-11**。
 
-📖 [逐站说明](docs/sites) · 📥 [下载指南](docs/DOWNLOAD.md) · 🔎 [完整接口核查](docs/ACCESS_GUIDE.md) · ✅ [实测记录](docs/VALIDATION.md) · 🌍 [卫星与天气数据](docs/REMOTE_SOURCES.md) · 🧩 [JSON 清单](catalog/sites.json) · 📋 [CSV 清单](catalog/sites.csv)
+🗂️ [全部下载路径总表](docs/DATA_SOURCES.md) · 📖 [逐站说明](docs/sites) · 📥 [下载指南](docs/DOWNLOAD.md) · 🔎 [完整接口核查](docs/ACCESS_GUIDE.md) · ✅ [实测记录](docs/VALIDATION.md) · 🌍 [卫星与天气数据](docs/REMOTE_SOURCES.md) · 🧩 [JSON 清单](catalog/sites.json) · 📋 [CSV 清单](catalog/sites.csv)
 
 > 对应 [SolarBench 项目](https://solarbench.github.io/)及[论文](https://arxiv.org/html/2609.06187v1)，与其他同名 benchmark 无关。本仓库由独立使用者维护，不代表原作者，也不托管或重新授权原始观测数据。
 
@@ -10,21 +10,23 @@
 
 [Hugging Face 组织公开 API](https://huggingface.co/api/datasets?author=solarbench)在核查日只返回 `solarbench/SKIPPD`。论文 v1 的 Data availability 说明完整处理数据拟在正式发表后公开。下表收录的是各机构的**原始来源**，与作者处理后的样本、模态对齐和实验划分可能不同。
 
-| 站点／国家 | 数据集 | 论文选取时段 | 主要地面数据 | 获取状态 |
-|---|---|---|---|---|
-| [Folsom／美国](docs/sites/folsom.md) | UCSD-Folsom | 2014–2016 | 天空图像、GHI/DNI/DHI、气象 | 🟡 官方文件表已定位，直连下载本次 403 |
-| [Golden／美国](docs/sites/golden.md) | SRRL-BMS | 2021–2024 | 天空图像、GHI/DNI/DHI、气象 | 🟢 匿名 CSV 与图像 ZIP 样例已验证 |
-| [Paris/Palaiseau／法国](docs/sites/sirta.md) | SIRTA | 2015–2022 | 天空图像、GHI/DNI/DHI、气象 | 🟢 公共 FTP 图像 ZIP 与辐射 TXT 已验证 |
-| [Puy de Dôme／法国](docs/sites/copdd.md) | COPDD | 2015–2023 | 天空图像；完整辐射标签待核实 | 🟢 图像清单 API 与样例 JPEG 已验证 |
-| [Gatton／澳大利亚](docs/sites/gatton.md) | UQueensland | 2020 | 天空图像、PV 功率 | 🟡 UQ RDM 下载页已在浏览器确认，文件未验证 |
-| [Stanford／美国](docs/sites/stanford.md) | SKIPPD | 2017–2019 | 天空图像、PV 功率 | 🔵 HF 公开仓库已确认 |
-| [Akwatia／加纳](docs/sites/akwatia.md) | EnerSHelF-Akwatia | 2022 | 天空图像、GTI | ⚪ 尚未找到独立公开接口 |
-| [Kologo／加纳](docs/sites/kologo.md) | EnerSHelF-Kologo | 2022 | 天空图像、GTI | ⚪ 尚未找到独立公开接口 |
-| [Sankt Augustin／德国](docs/sites/st-augustin.md) | EnerSHelF-StAugustin | 2020–2022 | 天空图像、GHI/DNI/DHI | ⚪ 尚未找到独立公开接口 |
-| [Hong Kong／中国](docs/sites/hong-kong.md) | HK-PolyU / HKPolyUSky | 2023 | 天空图像、GHI/DHI、气象 | ⚪ 尚未找到独立公开接口 |
-| [Nottingham／英国](docs/sites/nottingham.md) | UNottingham | 2023 | 天空图像、GHI/DNI/DHI、气象 | ⚪ 尚未找到独立公开接口 |
+**¹ 时间范围**分别注明论文选取与原始公开档案；未公开地面数据的五站单独标明。**² 模态**中的“独立 GFS/ERA5”需按站点坐标自行提取。完整逐项路径、卫星表 3 脚注与所有真实文件名见 **[下载路径总表](docs/DATA_SOURCES.md)**。
 
-GHI：水平总辐照度；DNI：法向直接辐照度；DHI：水平散射辐照度；GTI：倾斜面总辐照度；PV：光伏功率。上表的地面模态描述论文选取的数据，**绿色仅表示指定样例已验证**，不保证所有年份或模态都能完整下载。
+| 站点 | 论文中的名称 | 纬度、经度（°） | 已公开数据时间范围¹ | 模态类别² | 数据来源／下载路径 | 卫星数据（Supplementary Table 3） |
+|---|---|---|---|---|---|---|
+| [Folsom](docs/sites/folsom.md) | UCSD-Folsom | 38.642, -121.148 | 论文选取：2014-01-02—2016-12-30；原始公开记录覆盖 2014—2016。 | 天空图像；GHI/DNI/DHI；气象；NAM NWP；原始包另有 GOES-15；独立 GFS/ERA5 | [Zenodo 全部文件](https://zenodo.org/records/2826939)<br>[辐照度 CSV](https://zenodo.org/records/2826939/files/Folsom_irradiance.csv?download=1)<br>[天气 CSV](https://zenodo.org/records/2826939/files/Folsom_weather.csv?download=1)<br>[NAM 四邻点/图像/派生数据](docs/DATA_SOURCES.md#folsom-files)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | N/A（补充表 3 原文） |
+| [Gatton](docs/sites/gatton.md) | UQueensland | -27.559, 152.343 | 论文选取：2020-01-23—2020-05-06；公开下载页未单列完整文件时间边界。 | 天空图像；PV 功率；独立 GFS NWP、ERA5 | [UQ RDM 下载页](https://rdm.uq.edu.au/files/b051cba0-47b4-11ee-a00c-6f5af7bc2718)<br>[原始 DOI](https://doi.org/10.48610/bd7e108)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | Himawari-8；10 min、16 bands；[官方 S3 浏览入口](https://noaa-himawari8.s3.amazonaws.com/index.html#AHI-L1b-FLDK/)；论文 Segment：`S0810` |
+| [Golden](docs/sites/golden.md) | SRRL-BMS | 39.742, -105.180 | 论文选取：2021-04-17—2024-03-22；原始 BMS 测量自 1981-07-15 起，ASI-16 自 2017-09-26 起（官方说明，未逐日核查）。 | 天空图像；GHI/DNI/DHI；气象；独立 GFS NWP、ERA5 | [BMS CSV API（示例日）](https://midcdmz.nlr.gov/apps/data_api.pl?site=BMS&begin=20210417&end=20210417)<br>[ASI-16 图像 ZIP（示例日）](https://midcdmz.nlr.gov/tsi/SRRLASI/2021/20210417.zip)<br>[原始站点](https://midcdmz.nlr.gov/apps/sitehome.pl?site=BMS)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | GOES-16；5 min、16 bands；[官方 S3 浏览入口](https://noaa-goes16.s3.amazonaws.com/index.html#ABI-L1b-RadC/) |
+| [Paris / Palaiseau](docs/sites/sirta.md) | SIRTA | 48.713, 2.208 | 论文选取：2015-01-02—2022-12-31；官方图像元数据起于 2014-12-01，公共 FTP 列有 2014—2026 年目录，未检查逐日连续性。 | 天空图像；GHI/DNI/DHI；气象（逐项接口见下文）；独立 GFS NWP、ERA5 | [图像 FTP](ftp://sirtacam@ftp.sirta.ipsl.polytechnique.fr/srf02/)<br>[辐射 FTP](ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/radflux/)<br>[气象仪器 FTP 目录](ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/)<br>[元数据与条款](https://data.ipsl.fr/catalog/srv/api/records/d4ecf929-babd-4334-90ee-8058fd97d180/formatters/xml)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | MSG；5 min、12 bands；[EUMDAC](https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide)；[satellite-consumer](https://github.com/openclimatefix/satellite-consumer) |
+| [Puy de Dôme](docs/sites/copdd.md) | COPDD | 45.774, 2.962 | 论文选取：2015-12-01—2023-08-27；官方图像元数据起于 2015-12-01 13:16，未给出末端日期。 | 天空图像；同期辐照度标签未核实；气象另有 Cézeaux 记录，不能直接配对；独立 GFS NWP、ERA5 | [天空图像文件清单 API（示例时段）](https://ap.icare.univ-lille.fr/daalia/products/PUY_SKYIMAGER_L1A/files?start_time=2021-04-17T12:00:00Z&end_time=2021-04-17T12:05:00Z&protocol=HTTPS)<br>[图像目录](https://www.icare.univ-lille.fr/asd-content/archive?dir=GROUND-BASED/COPDD_Puy-De-Dome/SKY-IMAGER/SKY-IMAGER_L1A)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | MSG；5 min、12 bands；[EUMDAC](https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide)；[satellite-consumer](https://github.com/openclimatefix/satellite-consumer) |
+| [Stanford](docs/sites/stanford.md) | SKIPPD | 37.427, -122.174 | HF 地面数据卡展示：2017-03-09—2019-10-26；GFS/ERA5 各自完整文件时间边界未另行检查。 | 天空图像；PV 功率；不含图像的数值子集；HF 已有 GFS NWP、ERA5 | [HF 文件总目录](https://huggingface.co/datasets/solarbench/SKIPPD/tree/main)<br>[地面含图像](https://huggingface.co/datasets/solarbench/SKIPPD/tree/main/ground)<br>[仅数值](https://huggingface.co/datasets/solarbench/SKIPPD/tree/main/ground_no_sky_img)<br>[GFS](https://huggingface.co/datasets/solarbench/SKIPPD/tree/main/GFS)<br>[ERA5](https://huggingface.co/datasets/solarbench/SKIPPD/tree/main/ERA5) | N/A（补充表 3 原文） |
+| [Akwatia](docs/sites/akwatia.md) | EnerSHelF-Akwatia | 6.047, -0.797 | 地面数据：尚未确认公开；论文采集：2022-04-02—2022-09-23。卫星/GFS/ERA5 为独立原始档案，需另查时段。 | 公开原始卫星、GFS NWP、ERA5；论文地面图像/辐射数据尚未确认公开 | 地面数据未找到公开下载接口<br>[SolarBench 发布说明](https://solarbench.github.io/citation.html)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | MSG；15 min、12 bands；[EUMDAC](https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide)；[satellite-consumer](https://github.com/openclimatefix/satellite-consumer) |
+| [Kologo](docs/sites/kologo.md) | EnerSHelF-Kologo | 10.737, -1.078 | 地面数据：尚未确认公开；论文采集：2022-04-02—2022-10-04。卫星/GFS/ERA5 为独立原始档案，需另查时段。 | 公开原始卫星、GFS NWP、ERA5；论文地面图像/辐射数据尚未确认公开 | 地面数据未找到公开下载接口<br>[SolarBench 发布说明](https://solarbench.github.io/citation.html)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | MSG；15 min、12 bands；[EUMDAC](https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide)；[satellite-consumer](https://github.com/openclimatefix/satellite-consumer) |
+| [Sankt Augustin](docs/sites/st-augustin.md) | EnerSHelF-StAugustin | 50.779, 7.183 | 地面数据：尚未确认公开；论文采集：2020-11-19—2022-11-14。卫星/GFS/ERA5 为独立原始档案，需另查时段。 | 公开原始卫星、GFS NWP、ERA5；论文地面图像/辐射数据尚未确认公开 | 地面数据未找到公开下载接口<br>[SolarBench 发布说明](https://solarbench.github.io/citation.html)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | MSG；5 min、12 bands；[EUMDAC](https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide)；[satellite-consumer](https://github.com/openclimatefix/satellite-consumer) |
+| [Hong Kong](docs/sites/hong-kong.md) | HK-PolyU | 22.305, 114.180 | 地面数据：尚未确认公开；论文采集：2023-02-18—2023-12-31。卫星/GFS/ERA5 为独立原始档案，需另查时段。 | 公开原始卫星、GFS NWP、ERA5；论文地面图像/辐射数据尚未确认公开 | 地面数据未找到公开下载接口<br>[SolarBench 发布说明](https://solarbench.github.io/citation.html)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | Himawari-9；10 min、16 bands；[官方 S3 浏览入口](https://noaa-himawari9.s3.amazonaws.com/index.html#AHI-L1b-FLDK/)；论文 Segment：`S0301` |
+| [Nottingham](docs/sites/nottingham.md) | UNottingham | 52.952, -1.184 | 地面数据：尚未确认公开；论文采集：2023-01-05—2023-12-31。卫星/GFS/ERA5 为独立原始档案，需另查时段。 | 公开原始卫星、GFS NWP、ERA5；论文地面图像/辐射数据尚未确认公开 | 地面数据未找到公开下载接口<br>[SolarBench 发布说明](https://solarbench.github.io/citation.html)<br>[GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br>[ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | MSG；5 min、12 bands；[EUMDAC](https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide)；[satellite-consumer](https://github.com/openclimatefix/satellite-consumer) |
+
+GHI：水平总辐照度；DNI：法向直接辐照度；DHI：水平散射辐照度；GTI：倾斜面总辐照度；PV：光伏功率。上表区分了公开原始来源、论文采集内容与待核实模态；具体接口的实测状态见站点页和完整路径表，不保证所有年份或模态都能完整下载。
 
 ## 五分钟开始
 
@@ -63,9 +65,12 @@ python3 scripts/download.py plan copdd --date 2021-04-17 --modality images --lim
 ## 仓库结构与维护
 
 ```text
+catalog/data_sources.csv # 七列站点总表
+catalog/download_paths.csv # 各模态的逐项 URL、目录和模板
 catalog/sites.json       # 11 站点完整结构化记录：位置、时段、模态、状态、接口、许可
 catalog/sites.csv        # 可用表格软件查看的扁平摘要
 docs/sites/             # 每个站点一页说明
+docs/DATA_SOURCES.md     # 七列表格、全部已定位下载路径、表 3 卫星链接
 docs/DOWNLOAD.md         # 可复制的下载步骤、访问条件与时间对齐提醒
 docs/ACCESS_GUIDE.md     # 来源追溯和实际响应证据
 docs/REMOTE_SOURCES.md   # 卫星、ERA5、GFS 入口

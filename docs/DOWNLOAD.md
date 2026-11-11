@@ -107,7 +107,7 @@ curl --fail --location --continue-at - \
 
 ## Stanford — SKIPPD
 
-公开仓库：[solarbench/SKIPPD](https://huggingface.co/datasets/solarbench/SKIPPD)。先查看 Files 页面与数据卡中的配置，以选择地面完整数据或不含图像的子集。
+公开仓库：[solarbench/SKIPPD](https://huggingface.co/datasets/solarbench/SKIPPD)。先查看 Files 页面与数据卡中的配置，以选择地面完整数据、不含图像的数值子集、GFS 或 ERA5。[下载路径总表](DATA_SOURCES.md)列出了全部 12 个真实 Parquet 文件直链。
 
 如使用 Hugging Face 官方 Python 工具，可先仅列文件，再指定需要的文件下载：
 
