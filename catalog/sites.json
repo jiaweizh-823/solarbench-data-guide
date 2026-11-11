@@ -1,0 +1,682 @@
+{
+  "schema_version": "1.0",
+  "checked_at": "2026-11-11",
+  "scope": "Independent access guide to original datasets cited by SolarBench; not an official SolarBench release.",
+  "status_definitions": {
+    "verified_sample": "已读取样例实际内容；不保证完整年份、所有模态或长期可用。",
+    "catalogued": "官方文件表已定位；本环境实际下载未验证。",
+    "browser_entry_verified": "浏览器已确认下载入口；未验证文件内容。",
+    "public_repository": "公开仓库已由 API 确认；未下载全量数据。",
+    "not_publicly_found": "在核查范围内未找到公开接口；不能证明数据不存在。"
+  },
+  "sites": [
+    {
+      "id": "folsom",
+      "name": "UCSD-Folsom",
+      "location": {
+        "site": "Folsom",
+        "country": "美国",
+        "continent": "North America",
+        "latitude": 38.642,
+        "longitude": -121.148
+      },
+      "climate": "Csa",
+      "benchmark_period": {
+        "start": "2014-01-02",
+        "end": "2016-12-30",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GHI",
+        "DNI",
+        "DHI",
+        "meteorology"
+      ],
+      "access": {
+        "status": "catalogued",
+        "summary": "官方文件表已确认；本次命令行直连返回 403，未验证完整下载。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "原始记录及文件表",
+          "url": "https://zenodo.org/records/2826939",
+          "kind": "landing_page",
+          "verification": "official_file_listing",
+          "note": ""
+        },
+        {
+          "name": "文件元数据 API",
+          "url": "https://zenodo.org/api/records/2826939",
+          "kind": "metadata_api",
+          "verification": "http_403_in_this_environment",
+          "note": ""
+        },
+        {
+          "name": "辐照度 CSV",
+          "url": "https://zenodo.org/records/2826939/files/Folsom_irradiance.csv?download=1",
+          "kind": "measurement_file",
+          "verification": "official_file_listing",
+          "note": ""
+        },
+        {
+          "name": "气象 CSV",
+          "url": "https://zenodo.org/records/2826939/files/Folsom_weather.csv?download=1",
+          "kind": "measurement_file",
+          "verification": "official_file_listing",
+          "note": ""
+        },
+        {
+          "name": "2014 天空图像（约 13.8 GB）",
+          "url": "https://zenodo.org/records/2826939/files/Folsom_sky_images_2014.tar.bz2?download=1",
+          "kind": "image_archive",
+          "verification": "official_file_listing",
+          "note": ""
+        },
+        {
+          "name": "2015 天空图像（约 16.9 GB）",
+          "url": "https://zenodo.org/records/2826939/files/Folsom_sky_images_2015.tar.bz2?download=1",
+          "kind": "image_archive",
+          "verification": "official_file_listing",
+          "note": ""
+        },
+        {
+          "name": "2016 天空图像（约 18.6 GB）",
+          "url": "https://zenodo.org/records/2826939/files/Folsom_sky_images_2016.tar.bz2?download=1",
+          "kind": "image_archive",
+          "verification": "official_file_listing",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "按原始记录的数据使用要求，引用 Pedro et al. (2019)；未在此另授数据许可。",
+        "url": "https://zenodo.org/records/2826939"
+      },
+      "download_strategy": "folsom",
+      "description": "Folsom（美国）站点；SolarBench 地面模态：sky_image, GHI, DNI, DHI, meteorology。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "golden",
+      "name": "SRRL-BMS",
+      "location": {
+        "site": "Golden",
+        "country": "美国",
+        "continent": "North America",
+        "latitude": 39.742,
+        "longitude": -105.18
+      },
+      "climate": "Dfb",
+      "benchmark_period": {
+        "start": "2021-04-17",
+        "end": "2024-03-22",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GHI",
+        "DNI",
+        "DHI",
+        "meteorology"
+      ],
+      "access": {
+        "status": "verified_sample",
+        "summary": "匿名 CSV 与历史天空图像 ZIP 样例均通过实际内容验证。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "站点主页",
+          "url": "https://midcdmz.nlr.gov/apps/sitehome.pl?site=BMS",
+          "kind": "landing_page",
+          "verification": "http_200",
+          "note": ""
+        },
+        {
+          "name": "2021-04-17 测量 CSV",
+          "url": "https://midcdmz.nlr.gov/apps/data_api.pl?site=BMS&begin=20210417&end=20210417",
+          "kind": "measurement_api",
+          "verification": "csv_body_verified",
+          "note": "begin/end 格式 YYYYMMDD；原始时间为 MST。"
+        },
+        {
+          "name": "2021-04-17 天空图像 ZIP",
+          "url": "https://midcdmz.nlr.gov/tsi/SRRLASI/2021/20210417.zip",
+          "kind": "image_archive",
+          "verification": "http_206_zip_magic_verified",
+          "note": "样例 37,957,175 字节；模板 /tsi/SRRLASI/{YYYY}/{YYYYMMDD}.zip。"
+        },
+        {
+          "name": "历史图像日期选择器",
+          "url": "https://midcdmz.nlr.gov/apps/imagergallery.pl?SRRLASI",
+          "kind": "browser",
+          "verification": "http_200",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "按 MIDC/NLR 原始来源的使用及引用要求。",
+        "url": "https://midcdmz.nlr.gov/apps/sitehome.pl?site=BMS"
+      },
+      "download_strategy": "golden",
+      "description": "Golden（美国）站点；SolarBench 地面模态：sky_image, GHI, DNI, DHI, meteorology。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "sirta",
+      "name": "SIRTA",
+      "location": {
+        "site": "Paris / Palaiseau",
+        "country": "法国",
+        "continent": "Europe",
+        "latitude": 48.713,
+        "longitude": 2.208
+      },
+      "climate": "Cfb",
+      "benchmark_period": {
+        "start": "2015-01-02",
+        "end": "2022-12-31",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GHI",
+        "DNI",
+        "DHI",
+        "meteorology"
+      ],
+      "access": {
+        "status": "verified_sample",
+        "summary": "公共 FTP 可列目录；图像 ZIP 文件头与辐射 TXT 内容已验证。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "官方元数据 XML",
+          "url": "https://data.ipsl.fr/catalog/srv/api/records/d4ecf929-babd-4334-90ee-8058fd97d180/formatters/xml",
+          "kind": "metadata_api",
+          "verification": "xml_body_verified",
+          "note": ""
+        },
+        {
+          "name": "天空图像目录",
+          "url": "ftp://sirtacam@ftp.sirta.ipsl.polytechnique.fr/srf02/",
+          "kind": "ftp_directory",
+          "verification": "directory_verified",
+          "note": "公共账号 sirtacam，空密码；按 YYYY/MM/DD 列目录。"
+        },
+        {
+          "name": "辐射测量目录",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/radflux/",
+          "kind": "ftp_directory",
+          "verification": "directory_and_txt_verified",
+          "note": "公共账号 sirta_access，空密码；TXT 是数值数据，PNG 是快视图。"
+        },
+        {
+          "name": "2021-04-17 图像 ZIP",
+          "url": "ftp://sirtacam@ftp.sirta.ipsl.polytechnique.fr/srf02/2021/04/17/srf02_0a_skyimgLz2_v01_20210417_042400_893.zip",
+          "kind": "image_archive",
+          "verification": "zip_magic_verified",
+          "note": "样例 148,483,407 字节；文件名随每日起始时间与样本数变化。"
+        },
+        {
+          "name": "2021-04-17 辐射 TXT",
+          "url": "ftp://sirta_access@ftp.sirta.ipsl.polytechnique.fr/basesirta/1a/radflux/2021/04/17/radflux_1a_Lz2M1minI2apPrayDp_v07_20210417_000000_1440.txt",
+          "kind": "measurement_file",
+          "verification": "numeric_txt_body_verified",
+          "note": "UTC 时间，Direct/Diffuse/Global Solar Flux，W/m²。"
+        }
+      ],
+      "license": {
+        "summary": "公共研究/教学使用；禁止第三方再分发；请阅读仪器 PI、引用及合作条款。",
+        "url": "https://data.ipsl.fr/catalog/srv/api/records/d4ecf929-babd-4334-90ee-8058fd97d180/formatters/xml"
+      },
+      "download_strategy": "sirta",
+      "description": "Paris / Palaiseau（法国）站点；SolarBench 地面模态：sky_image, GHI, DNI, DHI, meteorology。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "copdd",
+      "name": "COPDD",
+      "location": {
+        "site": "Puy de Dôme",
+        "country": "法国",
+        "continent": "Europe",
+        "latitude": 45.774,
+        "longitude": 2.962
+      },
+      "climate": "Cfb",
+      "benchmark_period": {
+        "start": "2015-12-01",
+        "end": "2023-08-27",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GHI",
+        "DNI",
+        "DHI",
+        "meteorology"
+      ],
+      "access": {
+        "status": "verified_sample",
+        "summary": "文件清单 API 与样例 JPEG 直链可匿名读取；完整同期辐照度标签未核实。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "官方仪器元数据",
+          "url": "https://api.sedoo.fr/aeris-catalogue-prod/metadata/f89af1b0-2ca4-5760-86b2-65f4d597b921",
+          "kind": "metadata_api",
+          "verification": "json_body_verified",
+          "note": ""
+        },
+        {
+          "name": "Daalia API 文档",
+          "url": "https://ap.icare.univ-lille.fr/daalia/",
+          "kind": "api_documentation",
+          "verification": "openapi_verified",
+          "note": ""
+        },
+        {
+          "name": "5 分钟图像文件清单",
+          "url": "https://ap.icare.univ-lille.fr/daalia/products/PUY_SKYIMAGER_L1A/files?start_time=2021-04-17T12:00:00Z&end_time=2021-04-17T12:05:00Z&protocol=HTTPS",
+          "kind": "file_listing_api",
+          "verification": "http_200_hits_4",
+          "note": "使用 urls 数组；多个图像后缀不能视为多个独立时刻。"
+        },
+        {
+          "name": "历史图像目录",
+          "url": "https://www.icare.univ-lille.fr/asd-content/archive?dir=GROUND-BASED/COPDD_Puy-De-Dome/SKY-IMAGER/SKY-IMAGER_L1A",
+          "kind": "browser",
+          "verification": "redirected_to_login",
+          "note": "目录需登录，但样例文件直链匿名可读；不能据此推断所有文件都可匿名下载。"
+        },
+        {
+          "name": "样例原始 JPEG",
+          "url": "https://www.icare.univ-lille.fr/asd-content/archive/download.php?file=GROUND-BASED/COPDD_Puy-De-Dome/SKY-IMAGER/SKY-IMAGER_L1A.v1-00/2021/2021_04_17/CO-PDD_SKY-IMAGER_20210417120200_01.jpg",
+          "kind": "image_file",
+          "verification": "http_200_jpeg_magic_verified",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "按 ACTRIS/ICARE 与原始仪器提供方条款；部分服务需注册。",
+        "url": "https://api.sedoo.fr/aeris-catalogue-prod/metadata/f89af1b0-2ca4-5760-86b2-65f4d597b921"
+      },
+      "download_strategy": "copdd",
+      "description": "Puy de Dôme（法国）站点；SolarBench 地面模态：sky_image, GHI, DNI, DHI, meteorology。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "gatton",
+      "name": "UQueensland",
+      "location": {
+        "site": "Gatton",
+        "country": "澳大利亚",
+        "continent": "Oceania",
+        "latitude": -27.559,
+        "longitude": 152.343
+      },
+      "climate": "Cfa",
+      "benchmark_period": {
+        "start": "2020-01-23",
+        "end": "2020-05-06",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "PV"
+      ],
+      "access": {
+        "status": "browser_entry_verified",
+        "summary": "浏览器已确认 UQ RDM Open Access 文件页和下载按钮；未验证实际文件下载。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "原始 DOI",
+          "url": "https://doi.org/10.48610/bd7e108",
+          "kind": "doi",
+          "verification": "datacite_metadata_verified",
+          "note": ""
+        },
+        {
+          "name": "eSpace 原始记录",
+          "url": "https://espace.library.uq.edu.au/view/UQ:bd7e108",
+          "kind": "landing_page",
+          "verification": "browser_verified",
+          "note": "命令行请求返回 403，浏览器可打开；不能将 403 等同于数据不公开。"
+        },
+        {
+          "name": "UQ RDM 文件下载页",
+          "url": "https://rdm.uq.edu.au/files/b051cba0-47b4-11ee-a00c-6f5af7bc2718",
+          "kind": "browser_download",
+          "verification": "browser_open_access_button_verified",
+          "note": "页面有 DOWNLOAD FILE 按钮；实际文件下载未验证。"
+        },
+        {
+          "name": "DataCite 元数据 API",
+          "url": "https://api.datacite.org/dois/10.48610/bd7e108",
+          "kind": "metadata_api",
+          "verification": "json_body_verified",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "Permitted Re-Use with Commercial Use Restriction：非商业使用且需完整引用。",
+        "url": "https://guides.library.uq.edu.au/deposit-your-data/license-reuse-noncommercial"
+      },
+      "download_strategy": null,
+      "description": "Gatton（澳大利亚）站点；SolarBench 地面模态：sky_image, PV。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "stanford",
+      "name": "SKIPPD",
+      "location": {
+        "site": "Stanford",
+        "country": "美国",
+        "continent": "North America",
+        "latitude": 37.427,
+        "longitude": -122.174
+      },
+      "climate": "Csb",
+      "benchmark_period": {
+        "start": "2017-03-09",
+        "end": "2019-10-26",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "PV"
+      ],
+      "access": {
+        "status": "public_repository",
+        "summary": "HF 公开 API 已确认仓库存在、非私有、非 gated；全量下载未执行。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "HF 数据集及配置",
+          "url": "https://huggingface.co/datasets/solarbench/SKIPPD",
+          "kind": "huggingface",
+          "verification": "public_api_verified",
+          "note": ""
+        },
+        {
+          "name": "HF 仓库文件元数据",
+          "url": "https://huggingface.co/api/datasets/solarbench/SKIPPD",
+          "kind": "metadata_api",
+          "verification": "repository_public",
+          "note": ""
+        },
+        {
+          "name": "作者代码与原始数据说明",
+          "url": "https://github.com/yuhao-nie/Stanford-solar-forecasting-dataset",
+          "kind": "documentation",
+          "verification": "official_source",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "CC BY 4.0（HF 仓库数据卡）。",
+        "url": "https://huggingface.co/datasets/solarbench/SKIPPD"
+      },
+      "download_strategy": null,
+      "description": "Stanford（美国）站点；SolarBench 地面模态：sky_image, PV。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "akwatia",
+      "name": "EnerSHelF-Akwatia",
+      "location": {
+        "site": "Akwatia",
+        "country": "加纳",
+        "continent": "Africa",
+        "latitude": 6.047,
+        "longitude": -0.797
+      },
+      "climate": "Aw",
+      "benchmark_period": {
+        "start": "2022-04-02",
+        "end": "2022-09-23",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GTI"
+      ],
+      "access": {
+        "status": "not_publicly_found",
+        "summary": "SolarBench 新贡献，尚未找到独立公开的配对数据下载接口。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "新贡献数据的项目说明",
+          "url": "https://solarbench.github.io/citation.html",
+          "kind": "documentation",
+          "verification": "official_source",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "尚未取得独立数据许可；等待正式发布或向作者询问。",
+        "url": "https://arxiv.org/html/2609.06187v1"
+      },
+      "download_strategy": null,
+      "description": "Akwatia（加纳）站点；SolarBench 地面模态：sky_image, GTI。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "kologo",
+      "name": "EnerSHelF-Kologo",
+      "location": {
+        "site": "Kologo",
+        "country": "加纳",
+        "continent": "Africa",
+        "latitude": 10.737,
+        "longitude": -1.078
+      },
+      "climate": "Aw",
+      "benchmark_period": {
+        "start": "2022-04-02",
+        "end": "2022-10-04",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GTI"
+      ],
+      "access": {
+        "status": "not_publicly_found",
+        "summary": "SolarBench 新贡献，尚未找到独立公开的配对数据下载接口。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "新贡献数据的项目说明",
+          "url": "https://solarbench.github.io/citation.html",
+          "kind": "documentation",
+          "verification": "official_source",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "尚未取得独立数据许可；等待正式发布或向作者询问。",
+        "url": "https://arxiv.org/html/2609.06187v1"
+      },
+      "download_strategy": null,
+      "description": "Kologo（加纳）站点；SolarBench 地面模态：sky_image, GTI。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "st-augustin",
+      "name": "EnerSHelF-StAugustin",
+      "location": {
+        "site": "Sankt Augustin",
+        "country": "德国",
+        "continent": "Europe",
+        "latitude": 50.779,
+        "longitude": 7.183
+      },
+      "climate": "Cfb",
+      "benchmark_period": {
+        "start": "2020-11-19",
+        "end": "2022-11-14",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GHI",
+        "DNI",
+        "DHI"
+      ],
+      "access": {
+        "status": "not_publicly_found",
+        "summary": "SolarBench 新贡献，尚未找到独立公开的配对数据下载接口。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "新贡献数据的项目说明",
+          "url": "https://solarbench.github.io/citation.html",
+          "kind": "documentation",
+          "verification": "official_source",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "尚未取得独立数据许可；等待正式发布或向作者询问。",
+        "url": "https://arxiv.org/html/2609.06187v1"
+      },
+      "download_strategy": null,
+      "description": "Sankt Augustin（德国）站点；SolarBench 地面模态：sky_image, GHI, DNI, DHI。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "hong-kong",
+      "name": "HK-PolyU / HKPolyUSky",
+      "location": {
+        "site": "Hong Kong",
+        "country": "中国",
+        "continent": "Asia",
+        "latitude": 22.305,
+        "longitude": 114.18
+      },
+      "climate": "Cwa",
+      "benchmark_period": {
+        "start": "2023-02-18",
+        "end": "2023-12-31",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GHI",
+        "DHI",
+        "meteorology"
+      ],
+      "access": {
+        "status": "not_publicly_found",
+        "summary": "SolarBench 新贡献，尚未找到独立公开的配对数据下载接口。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "新贡献数据的项目说明",
+          "url": "https://solarbench.github.io/citation.html",
+          "kind": "documentation",
+          "verification": "official_source",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "尚未取得独立数据许可；等待正式发布或向作者询问。",
+        "url": "https://arxiv.org/html/2609.06187v1"
+      },
+      "download_strategy": null,
+      "description": "Hong Kong（中国）站点；SolarBench 地面模态：sky_image, GHI, DHI, meteorology。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    },
+    {
+      "id": "nottingham",
+      "name": "UNottingham",
+      "location": {
+        "site": "Nottingham",
+        "country": "英国",
+        "continent": "Europe",
+        "latitude": 52.952,
+        "longitude": -1.184
+      },
+      "climate": "Cfb",
+      "benchmark_period": {
+        "start": "2023-01-05",
+        "end": "2023-12-31",
+        "source": "https://arxiv.org/html/2609.06187v1"
+      },
+      "benchmark_ground_modalities": [
+        "sky_image",
+        "GHI",
+        "DNI",
+        "DHI",
+        "meteorology"
+      ],
+      "access": {
+        "status": "not_publicly_found",
+        "summary": "SolarBench 新贡献，尚未找到独立公开的配对数据下载接口。",
+        "checked_at": "2026-11-11"
+      },
+      "endpoints": [
+        {
+          "name": "新贡献数据的项目说明",
+          "url": "https://solarbench.github.io/citation.html",
+          "kind": "documentation",
+          "verification": "official_source",
+          "note": ""
+        }
+      ],
+      "license": {
+        "summary": "尚未取得独立数据许可；等待正式发布或向作者询问。",
+        "url": "https://arxiv.org/html/2609.06187v1"
+      },
+      "download_strategy": null,
+      "description": "Nottingham（英国）站点；SolarBench 地面模态：sky_image, GHI, DNI, DHI, meteorology。原始数据格式、有效时段与处理后的 benchmark 不完全相同。",
+      "sources": [
+        "https://arxiv.org/html/2609.06187v1",
+        "https://solarbench.github.io/citation.html"
+      ]
+    }
+  ]
+}
