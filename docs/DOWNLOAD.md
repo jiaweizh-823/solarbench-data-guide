@@ -19,6 +19,52 @@ python3 scripts/download.py fetch golden --date 2021-04-17 --modality images
 
 原始 CSV API 使用 `site=BMS&begin=YYYYMMDD&end=YYYYMMDD`。天空图像 ZIP 模板为 `https://midcdmz.nlr.gov/tsi/SRRLASI/{YYYY}/{YYYYMMDD}.zip`。本工具逐日获取，不保证任意日期都有记录。BMS 原始时间标记为 **MST**；先核对其固定偏移和图像时间，不能直接把它当作含夏令时切换的本地时间。
 
+## 多天批量下载
+
+脚本的 `--date` 每次选择一天。下面通过 Bash／Zsh 循环逐日调用，适用于 Golden、SIRTA，以及仅获取图像的 CO-PDD；Folsom 按年份／完整文件下载，见其专节。
+
+### 连续日期：先预览，再下载
+
+以 Golden **2021-04-17 至 2021-04-19（包含首尾）** 为例：
+
+```bash
+# 批量预览，不下载数据文件
+for day in 2021-04-{17..19}; do
+  python3 scripts/download.py plan golden \
+    --date "$day" --modality all || break
+done
+
+# 确认后，逐日下载测量数据和天空图像
+for day in 2021-04-{17..19}; do
+  python3 scripts/download.py fetch golden \
+    --date "$day" --modality all || break
+done
+```
+
+`{17..19}` 在 Bash／Zsh 中展开为 `17 18 19`。它不会校验日历合法性，因此只用于同一月份内的有效日期；跨月时请使用下面的显式日期列表。
+
+模态可按需要修改：`measurements` 为数值测量数据，`images` 为天空图像，`all` 为脚本支持的这两类。`all` 不包含卫星、GFS、ERA5 等未接入模态。
+
+### 跨月或不连续日期
+
+```bash
+# 自定义日期列表：跨月，并跳过 2021-05-02
+for day in 2021-04-29 2021-04-30 2021-05-01 2021-05-03; do
+  python3 scripts/download.py fetch golden \
+    --date "$day" --modality images || break
+done
+```
+
+将 `fetch` 换成 `plan` 即可先预览。通过 `--output ./my-data` 可指定下载根目录，每一天仍分别保存到 `./my-data/golden/YYYY-MM-DD/`。
+
+### 执行顺序与中断
+
+- 上面的循环按顺序逐日执行；例如，连续三天的结果分别存入 `downloads/golden/2021-04-17/`、`2021-04-18/`、`2021-04-19/`。
+- `|| break` 表示某一天调用失败就停止后续日期；已有同名文件也会导致该次调用失败，工具不会自动跳过或覆盖它。
+- 已完成的文件会保留。处理原因后，从日期列表中选择尚需获取的日期继续；这些示例不提供自动断点续传。
+- SIRTA 的 `plan` 需要访问 FTP，CO-PDD 的 `plan` 需要查询文件清单；Golden 的预览生成 URL，仍需下载时验证实际可用性。
+- CO-PDD 必须使用 `--modality images`。如添加 `--limit 2`，表示每一天最多选择 2 个文件，不是整个日期列表合计 2 个文件。
+
 ## SIRTA — Paris/Palaiseau
 
 ```bash

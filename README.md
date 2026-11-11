@@ -129,7 +129,39 @@ python3 scripts/download.py plan folsom --year 2014 --modality images
 
 CO-PDD 的 `--limit 2` 表示 **2 个文件**；同一时刻可能有不同图像后缀，因此不一定对应 2 个时间点。SIRTA 的公共 FTP 账号由工具自动使用；网络需要能够访问 FTP 服务。
 
-### 5. 文件保存在哪里？
+### 5. 一次下载多天的数据
+
+当前脚本每次处理一天，可以在 **Bash／Zsh** 中用循环连续调用。下面示例获取 Golden **2021-04-17 至 2021-04-19（包含首尾）** 的数据：
+
+```bash
+# 先批量预览，每一天分别生成下载计划
+for day in 2021-04-{17..19}; do
+  python3 scripts/download.py plan golden \
+    --date "$day" --modality all || break
+done
+
+# 确认后，批量下载每天的测量数据和天空图像
+for day in 2021-04-{17..19}; do
+  python3 scripts/download.py fetch golden \
+    --date "$day" --modality all || break
+done
+```
+
+将 `all` 改为 `measurements` 可只下载数值测量数据，改为 `images` 可只下载天空图像。跨月或不连续的日期可以显式列出：
+
+```bash
+# 自定义日期列表：跨月，并跳过 2021-05-02
+for day in 2021-04-29 2021-04-30 2021-05-01 2021-05-03; do
+  python3 scripts/download.py fetch golden \
+    --date "$day" --modality images || break
+done
+```
+
+循环按顺序逐日执行，文件分别保存到 `downloads/golden/2021-04-17/` 等日期子目录。**任意一天下载失败或遇到已有同名文件时，`|| break` 会停止后续日期**；已成功下载的文件会保留。处理问题后，修改日期列表，从需要的日期继续。
+
+这类日期循环适用于 Golden、SIRTA；用于 CO-PDD 时必须指定 `--modality images`，`--limit` 的限制会分别作用于每一天。Folsom 的图像按 `--year` 获取，数值 CSV 是完整文件，应使用前面的年度／完整文件示例。更多说明见[批量下载指南](docs/DOWNLOAD.md#多天批量下载)。
+
+### 6. 文件保存在哪里？
 
 默认保存到仓库下的 `downloads/<站点 ID>/<日期、年份或 measurements>/`，例如：
 
