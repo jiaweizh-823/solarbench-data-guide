@@ -33,33 +33,126 @@
 | [Hong Kong](docs/sites/hong-kong.md) | HK-PolyU | 22.305, 114.180 | 2023-02-18—2023-12-31 | 公开原始卫星、GFS NWP、ERA5；论文地面图像/辐射数据尚未确认公开 |  - 地面数据未找到公开下载接口<br> - [SolarBench 发布说明](https://solarbench.github.io/citation.html)<br> - [GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br> - [ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | Himawari-9；10 min、16 bands；[官方 S3 浏览入口](https://noaa-himawari9.s3.amazonaws.com/index.html#AHI-L1b-FLDK/)；论文 Segment：`S0301` |
 | [Nottingham](docs/sites/nottingham.md) | UNottingham | 52.952, -1.184 | 2023-01-05—2023-12-31 | 公开原始卫星、GFS NWP、ERA5；论文地面图像/辐射数据尚未确认公开 | - 地面数据未找到公开下载接口<br> - [SolarBench 发布说明](https://solarbench.github.io/citation.html)<br> - [GFS 原始档案](https://registry.opendata.aws/noaa-gfs-bdp-pds/)<br> - [ERA5 原始档案](https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=download) | MSG；5 min、12 bands；[EUMDAC](https://user.eumetsat.int/resources/user-guides/eumetsat-data-access-client-eumdac-guide)；[satellite-consumer](https://github.com/openclimatefix/satellite-consumer) |
 
-GHI：水平总辐照度；DNI：法向直接辐照度；DHI：水平散射辐照度；GTI：倾斜面总辐照度；PV：光伏功率；GFS：数值天气预报；ERA5：重构历史天气预报
+GHI：水平总辐照度；DNI：法向直接辐照度；DHI：水平散射辐照度；GTI：倾斜面总辐照度；PV：光伏功率；GFS：数值天气预报；ERA5：历史天气再分析，通过融合观测和数值模式重建过去的天气状态。
 
-## 使用python script预览/下载数据
+## 使用 Python 脚本预览／下载数据
 
-下载工具仅用 **Python 3.9+ 标准库**，无需安装第三方包。
+下载工具使用 **Python 3.9+ 标准库**，无需安装第三方包。使用顺序是：**查看站点 → 选择日期与模态 → 预览路径 → 实际下载**。下面各下载示例可独立选择；重复下载已有同名文件时，工具会报错并保留原文件。
+
+### 1. 获取仓库，查看站点和接口
 
 ```bash
 git clone https://github.com/jiaweizh-823/solarbench-data-guide.git
 cd solarbench-data-guide
 
-# 离线查看站点和接口
+# 已有本地仓库时，在该目录更新：git pull --ff-only
+
+# 离线列出所有站点 ID、论文名称和访问状态
 python3 scripts/download.py list
+
+# 离线查看某个站点的坐标、时段、模态、许可与来源链接
 python3 scripts/download.py info golden
-
-# 先预览一天的测量数据；plan 不下载数据文件
-python3 scripts/download.py plan golden --date 2021-04-17
-
-# 实际下载这一天的 CSV
-python3 scripts/download.py fetch golden --date 2021-04-17
-
-# 预览法国 CO-PDD 的图像地址，只选前 2 个文件
-python3 scripts/download.py plan copdd --date 2021-04-17 --modality images --limit 2
 ```
 
-支持自动解析：**Golden、SIRTA、CO-PDD、Folsom**。Gatton 使用 [UQ RDM 文件页](https://rdm.uq.edu.au/files/b051cba0-47b4-11ee-a00c-6f5af7bc2718)；SKIPPD 使用 HF 官方工具，详见[下载指南](docs/DOWNLOAD.md)。工具会拒绝把登录页 HTML 保存成数据，并在下载失败时清理自己创建的临时文件；不会覆盖已有文件，也不会解压下载的归档。
+命令使用小写站点 ID，例如 `golden`、`sirta`、`copdd`、`folsom`。`list` / `info` 读取仓库中的清单，可以离线运行。
 
-**内存提示：** Folsom 年度天空图像每包约 14–19 GB；Golden、SIRTA 的单日图像也可能达到几十至数百 MB。先运行 `plan`，确认文件数与原始条款，再执行 `fetch`。目录/API 查询本身需要联网。
+### 2. 选择模态和站点
+
+`--modality` 控制下载内容：
+
+| 参数 | 含义 | 示例 |
+|---|---|---|
+| `measurements` | 数值测量数据，默认选项；具体内容取决于站点 | Golden 为辐射与气象 CSV，SIRTA 为 2AP 辐射 TXT |
+| `images` | 地面天空图像 | Golden／SIRTA 的图像 ZIP，CO-PDD 的 JPEG |
+| `all` | 当前脚本支持的数值测量数据＋天空图像 | 不包含卫星、GFS、ERA5 或其他未接入的模态 |
+
+各站点的支持范围：
+
+| 站点 ID | 时间选择 | 支持的 `--modality` | 下载内容和范围 |
+|---|---|---|---|
+| `golden` | `--date YYYY-MM-DD` | `measurements`、`images`、`all` | 指定一天的 BMS CSV／ASI-16 图像 ZIP |
+| `sirta` | `--date YYYY-MM-DD` | `measurements`、`images`、`all` | 指定一天的最新版本 2AP 辐射 TXT／图像 ZIP；其他气象仪器目录见总表 |
+| `copdd` | `--date YYYY-MM-DD` | **仅 `images`** | 指定一天的图像文件清单及 JPEG；可用 `--limit` 限制文件数 |
+| `folsom` | 图像使用 `--year 2014/2015/2016` | `measurements`、`images`、`all` | 图像按年下载；数值 CSV 是原始完整文件，不按 `--date` 或 `--year` 截取 |
+
+Gatton 使用 [UQ RDM 下载页](https://rdm.uq.edu.au/files/b051cba0-47b4-11ee-a00c-6f5af7bc2718)，Stanford/SKIPPD 使用 [HF 文件目录](https://huggingface.co/datasets/solarbench/SKIPPD/tree/main)。卫星、GFS、ERA5、Folsom 的 NAM 和其他已定位来源可从 **[全部下载路径总表](docs/DATA_SOURCES.md)** 获取；这些模态尚未接入此脚本，不能直接使用 `--modality GFS` 等参数。
+
+### 3. Golden：按天预览和下载
+
+```bash
+# 预览一天的数值测量数据；measurements 也是默认选项
+python3 scripts/download.py plan golden --date 2021-04-17 --modality measurements
+
+# 实际下载该日辐照度和气象 CSV
+python3 scripts/download.py fetch golden --date 2021-04-17 --modality measurements
+
+# 预览、下载同一天的天空图像 ZIP
+python3 scripts/download.py plan golden --date 2021-04-17 --modality images
+python3 scripts/download.py fetch golden --date 2021-04-17 --modality images
+
+# 如需一次获取 CSV 和图像，可选择 all（与上面的分开下载方式二选一）
+python3 scripts/download.py plan golden --date 2021-04-17 --modality all
+# 确认计划后执行：
+# python3 scripts/download.py fetch golden --date 2021-04-17 --modality all
+```
+
+`plan golden --date 2021-04-17` 会显示待下载文件数及这个 CSV 接口：
+
+```text
+https://midcdmz.nlr.gov/apps/data_api.pl?site=BMS&begin=20210417&end=20210417
+```
+
+`plan` **不下载数据文件**。Golden／Folsom 的计划根据日期或年份生成 URL，不请求文件来验证当天是否有数据；SIRTA／CO-PDD 的计划需要联网列目录或查询文件清单。实际文件可访问性由 `fetch` 检查。计划没有返回数据包体积时，应先查看原始文件表确认大小。
+
+### 4. SIRTA、CO-PDD 与 Folsom 示例
+
+```bash
+# SIRTA：预览一天的辐射 TXT，确认后下载
+python3 scripts/download.py plan sirta --date 2021-04-17 --modality measurements
+python3 scripts/download.py fetch sirta --date 2021-04-17 --modality measurements
+
+# SIRTA：预览当天的真实图像 ZIP 文件名
+python3 scripts/download.py plan sirta --date 2021-04-17 --modality images
+
+# CO-PDD：预览、下载当天清单中的前 2 个图像文件
+python3 scripts/download.py plan copdd --date 2021-04-17 --modality images --limit 2
+python3 scripts/download.py fetch copdd --date 2021-04-17 --modality images --limit 2
+
+# Folsom：预览原始辐照度和气象 CSV（完整文件，不是某一天）
+python3 scripts/download.py plan folsom --modality measurements
+
+# Folsom：预览 2014 年的天空图像包，约 13.8 GB
+python3 scripts/download.py plan folsom --year 2014 --modality images
+# 确认体积和下载路径后执行：
+# python3 scripts/download.py fetch folsom --year 2014 --modality images
+```
+
+CO-PDD 的 `--limit 2` 表示 **2 个文件**；同一时刻可能有不同图像后缀，因此不一定对应 2 个时间点。SIRTA 的公共 FTP 账号由工具自动使用；网络需要能够访问 FTP 服务。
+
+### 5. 文件保存在哪里？
+
+默认保存到仓库下的 `downloads/<站点 ID>/<日期、年份或 measurements>/`，例如：
+
+```text
+downloads/
+├── golden/2021-04-17/BMS_20210417.csv
+├── golden/2021-04-17/20210417.zip
+├── copdd/2021-04-17/CO-PDD_SKY-IMAGER_....jpg
+├── folsom/measurements/Folsom_irradiance.csv
+└── folsom/2014/Folsom_sky_images_2014.tar.bz2
+```
+
+通过 `--output` 指定下载根目录；工具仍会在其中创建站点和时间子目录：
+
+```bash
+python3 scripts/download.py fetch golden --date 2021-04-17 \
+  --modality images --output ./my-data
+# 保存为 ./my-data/golden/2021-04-17/20210417.zip
+```
+
+**下载体积与磁盘空间：** Folsom 年度天空图像每包约 14–19 GB，Golden／SIRTA 单日图像也可能有几十至数百 MB。下载工具保留原始 ZIP／tar.bz2，需要自行解压并预留额外磁盘空间；大文件续传方法见[下载指南](docs/DOWNLOAD.md#folsom--ucsd-folsom)。
+
+工具会检查返回内容，避免把登录页 HTML 保存成数据。同名文件已存在时会停止；下载失败时清理本次创建的临时文件。下载成功后，时间对齐、缺测处理和模型输入构造可参考[详细下载与使用说明](docs/DOWNLOAD.md)。
 
 ## 根据预测目标、模态选择数据集
 
