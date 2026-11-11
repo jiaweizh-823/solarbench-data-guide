@@ -161,7 +161,7 @@ done
 
 这类日期循环适用于 Golden、SIRTA；用于 CO-PDD 时必须指定 `--modality images`，`--limit` 的限制会分别作用于每一天。Folsom 的图像按 `--year` 获取，数值 CSV 是完整文件，应使用前面的年度／完整文件示例。更多说明见[批量下载指南](docs/DOWNLOAD.md#多天批量下载)。
 
-### 6. 文件保存在哪里？
+### 6. 文件保存路径
 
 默认保存到仓库下的 `downloads/<站点 ID>/<日期、年份或 measurements>/`，例如：
 
@@ -188,11 +188,11 @@ python3 scripts/download.py fetch golden --date 2021-04-17 \
 
 ## 根据预测目标、模态选择数据集
 
-- 想快速做“历史辐照度 → 未来辐照度”：先下载 Golden 的日 CSV，或 SIRTA 的辐射 TXT。
-- 想做“天空图像＋辐照度”：Golden、SIRTA 的两类数据都有已验证入口；仍需对齐时间戳与传感器。
-- 想做“天空图像＋实际 PV 功率”：查看 SKIPPD，或通过 Gatton 的 UQ RDM 页面访问。
-- 想做“多个气候／跨站点迁移”：先看 [JSON](catalog/sites.json) 中的坐标、气候与覆盖时段；五个 SolarBench 新贡献站点的公开入口目前仍缺失。
-- 想使用卫星、ERA5 或 GFS：查看[遥感与天气数据入口](docs/REMOTE_SOURCES.md)，这些是需自行裁剪和对齐的原始产品。
+- “历史辐照度 → 未来辐照度”：先下载 Golden 的日 CSV，或 SIRTA 的辐射 TXT。
+- “天空图像＋辐照度”：Golden、SIRTA 的两类数据都有已验证入口；仍需对齐时间戳与传感器。
+- “天空图像＋实际 PV 功率”：查看 SKIPPD，或通过 Gatton 的 UQ RDM 页面访问。
+- “多个气候／跨站点迁移”：先看 [JSON](catalog/sites.json) 中的坐标、气候与覆盖时段；五个 SolarBench 新贡献站点的公开入口目前仍缺失。
+- 使用卫星、ERA5 或 GFS：查看[遥感与天气数据入口](docs/REMOTE_SOURCES.md)，这些是需自行裁剪和对齐的原始产品。
 
 ## 仓库结构与维护
 
